@@ -1,0 +1,42 @@
+name: Deploy Hexo
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+     
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+     
+      - name: Install Hexo
+        run: |
+          npm install hexo-cli -g
+          npm install hexo --save
+          npm install hexo-deployer-git --save
+     
+      - name: Install dependencies
+        run: |
+          npm install
+          npm ci
+     
+      - name: Generate static files
+        run: |
+          hexo clean
+          hexo generate
+     
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.GH_TOKEN }}
+          publish_dir: ./public
+          external_repository: jk1ash/jk1ash.github.io
+          publish_branch: main
