@@ -10,3 +10,4 @@ coverage/
 public/
 .tmp*
 .vscode
+db.json
