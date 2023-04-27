@@ -49,7 +49,7 @@ avatar:
   effect: false
 
 # Disable all banner image
-disable_top_img: false
+disable_top_img: true
 
 # The banner image of home page
 index_img: https://image-hosts-1305019894.cos.accelerate.myqcloud.com/2022/05/07/627606ae1e0cf.jpg
@@ -220,7 +220,7 @@ aside:
   hide: false
   button: true
   mobile: true # display on mobile
-  position: right # left or right
+  position: left # left or right
   display:
     archive: true
     tag: true
